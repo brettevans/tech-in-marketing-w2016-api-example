@@ -28,6 +28,10 @@
 	 '[adzerk.boot-reload :refer [reload]]
 	 '[pandeiro.boot-http :refer :all])
 
+(deftask build []
+  (comp (cljs :optimizations :advanced)
+	(target :dir #{"target"})))
+
 (deftask dev []
   (comp (serve :dir "target/public" :port 3000)
 	(watch)
